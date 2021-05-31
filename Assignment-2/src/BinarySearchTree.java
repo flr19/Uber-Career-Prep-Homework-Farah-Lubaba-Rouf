@@ -22,7 +22,7 @@ public class BinarySearchTree {
     }
     public void insert(int key) {
         // Please implement this method.
-
+        root=insertRoot(key,root);
     }
 
     /**
@@ -32,9 +32,24 @@ public class BinarySearchTree {
      * @param key The key to check for.
      * @return true if the key is present in this binary search tree, false otherwise.
      */
+    private boolean findRoot(Node root,int key) {
+        if(root==null) {
+            return false;
+        }
+        if(root.key==key) {
+            return true;
+        }
+        else if(key>root.key) {
+            return findRoot(root.right,key);
+        }
+        else if(key<root.key) {
+            return findRoot(root.left,key);
+        }
+        return false;
+    }
+
     public boolean find(int key) {
         // Please implement this method.
-        return true;
     }
 
     public static class Node {
