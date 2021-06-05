@@ -1,8 +1,14 @@
 public class PhoneBookTree implements PhoneBook {
     private Node root;
+    public int treeSize(Node root) {
+        if(root==null) {
+            return 0;
+        }
+        return treeSize(root.left)+treeSize(root.right)+1;
+    }
     @Override
     public int size() {
-        return 0;
+        return treeSize(root);
     }
 
     @Override
@@ -29,13 +35,12 @@ public class PhoneBookTree implements PhoneBook {
             return root.phoneNumber;
 
         // Key is greater than root's key
-        if (root.name < name)
-            return search(root.right, key);
+        if (root.name.compareTo(name)>0)
+            return find(name);
         
 
         // Key is smaller than root's key
-        return search(root.left, key);
-        return 0;
+        return find(name);
     }
     public static class Node {
         public String name;
