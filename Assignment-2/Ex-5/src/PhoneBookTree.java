@@ -1,14 +1,14 @@
 public class PhoneBookTree implements PhoneBook {
     private Node root;
-    public int treeSize(Node root) {
+    public int treesize(Node root) {
         if(root==null) {
             return 0;
         }
-        return treeSize(root.left)+treeSize(root.right)+1;
+        return treesize(root.left)+treesize(root.right)+1;
     }
     @Override
     public int size() {
-        return treeSize(root);
+        return treesize(root);
     }
 
     @Override
